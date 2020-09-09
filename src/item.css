@@ -1,0 +1,34 @@
+.image-crop2 {
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+}
+
+.Item {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  padding-top: 20px;
+  border-top: 1px solid #ccc;
+}
+
+.Item-label {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.Item-label2 {
+  width: 120px;
+}
+
+.Item-title {
+  font-weight: 700;
+  font-size: smaller;
+}
+
+.Item-price {
+  font-size: smaller;
+}

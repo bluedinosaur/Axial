@@ -1,0 +1,20 @@
+.CartPage-items {
+  padding: 20px;
+  list-style: none;
+}
+
+.CartItem-count {
+  /* padding: 5px; */
+  /* border: 1px solid #ccc; */
+}
+
+.CartItem-controls {
+  padding-top: 10px;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  font-weight: 600;
+}
