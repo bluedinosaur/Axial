@@ -1,22 +1,31 @@
 import React from "react";
 import "./App.css";
 import data from "./data";
-import NavDrawer from "./navdrawer";
+import NavDrawer from "./Nav/navdrawer";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
 import Snackbar from "@material-ui/core/Snackbar";
 import CloseIcon from "@material-ui/icons/Close";
+import Grid from "@material-ui/core/Grid";
+import Footer from "./Nav/footer";
 
 const ItemList = ({ data, onAddOne }) => {
   return (
-    <div className="item-list-container">
+    <Grid
+      container
+      className="item-list-container"
+      spacing={4}
+      justify="center"
+    >
       {data.map((itemdata) => (
-        <FadeInSection>
+        <Grid item xs={12} sm={6} md={6} lg={4} xl={4} key={itemdata.name}>
+          {/* <FadeInSection> */}
           <Item key={itemdata.id} itemdata={itemdata} onAddOne={onAddOne} />
-        </FadeInSection>
+          {/* </FadeInSection> */}
+        </Grid>
       ))}
-    </div>
+    </Grid>
   );
 };
 
@@ -24,12 +33,15 @@ const Item = ({ itemdata, onAddOne }) => {
   return (
     <div className="item">
       <div className="image-crop">
-        <img src={itemdata.imgurlfront} alt="imagefront" height="300px" />
+        <img
+          className="imagefront"
+          src={itemdata.imgurlfront}
+          alt="imagefront"
+        />
         <img
           src={itemdata.imgurlback}
           alt="imageback"
           className="img-on-hover"
-          height="300px"
         />
       </div>
       <Label
@@ -60,25 +72,25 @@ const Label = ({ name, price, onAddOne, itemdata }) => {
   );
 };
 
-function FadeInSection(props) {
-  const [isVisible, setVisible] = React.useState(true);
-  const domRef = React.useRef();
-  React.useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => setVisible(entry.isIntersecting));
-    });
-    observer.observe(domRef.current);
-    return () => observer.unobserve(domRef.current);
-  }, []);
-  return (
-    <div
-      className={`fade-in-section ${isVisible ? "is-visible" : ""}`}
-      ref={domRef}
-    >
-      {props.children}
-    </div>
-  );
-}
+// function FadeInSection(props) {
+//   const [isVisible, setVisible] = React.useState(true);
+//   const domRef = React.useRef();
+//   React.useEffect(() => {
+//     const observer = new IntersectionObserver((entries) => {
+//       entries.forEach((entry) => setVisible(entry.isIntersecting));
+//     });
+//     observer.observe(domRef.current);
+//     return () => observer.unobserve(domRef.current);
+//   }, []);
+//   return (
+//     <div
+//       className={`fade-in-section ${isVisible ? "is-visible" : ""}`}
+//       ref={domRef}
+//     >
+//       {props.children}
+//     </div>
+//   );
+// }
 
 class App extends React.Component {
   state = {
@@ -86,6 +98,20 @@ class App extends React.Component {
     open: false,
     vertical: "top",
     horizontal: "center",
+    data: data,
+  };
+
+  handleSelectFilter = (event, value) => {
+    if (value === "all") {
+      this.setState({ data: data });
+    } else {
+      const filtereddata = data.filter((item) => {
+        return item.type.toLowerCase().includes(value.toLowerCase());
+      });
+      this.setState({
+        data: filtereddata,
+      });
+    }
   };
 
   handleAddToCart = (item) => {
@@ -122,6 +148,7 @@ class App extends React.Component {
           cart={this.state.cart}
           onAddOne={this.handleAddToCart}
           onRemoveOne={this.handleRemoveOne}
+          selectFilter={this.handleSelectFilter}
         />
         <Snackbar
           anchorOrigin={{
@@ -145,7 +172,8 @@ class App extends React.Component {
             </React.Fragment>
           }
         />
-        <ItemList data={data} onAddOne={this.handleAddToCart} />
+        <ItemList data={this.state.data} onAddOne={this.handleAddToCart} />
+        <Footer />
       </div>
     );
   }

@@ -6,16 +6,17 @@ import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
+import RemoveRedEyeIcon from "@material-ui/icons/RemoveRedEye";
 import PanToolIcon from "@material-ui/icons/PanTool";
 import AirlineSeatLegroomExtraIcon from "@material-ui/icons/AirlineSeatLegroomExtra";
 import FaceIcon from "@material-ui/icons/Face";
 import AllInclusiveIcon from "@material-ui/icons/AllInclusive";
 import SearchAppBar from "./searchappbar";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
-import data from "./data";
-import CartPage from "./cartpage";
-import Total from "./totalcart";
+import data from "../data";
+import CartPage from "../Components/cartpage";
+import Total from "../Components/totalcart";
+import AccessibilityIcon from "@material-ui/icons/Accessibility";
 
 const useStyles = makeStyles({
   list: {
@@ -26,7 +27,12 @@ const useStyles = makeStyles({
   },
 });
 
-export default function NavDrawer({ cart, onAddOne, onRemoveOne }) {
+export default function NavDrawer({
+  cart,
+  onAddOne,
+  onRemoveOne,
+  selectFilter,
+}) {
   const classes = useStyles();
   const [state, setState] = React.useState({
     left: false,
@@ -85,29 +91,41 @@ export default function NavDrawer({ cart, onAddOne, onRemoveOne }) {
         <ListItem>
           <OutlinedInput fullWidth small></OutlinedInput>
         </ListItem>
-        <ListItem button>
+        <ListItem button onClick={(event) => selectFilter(event, "all")}>
           <ListItemIcon>
             <AllInclusiveIcon />
           </ListItemIcon>
-          <ListItemText primary="All" />
+          <span className="List">all</span>
         </ListItem>
-        <ListItem button>
+        <ListItem button onClick={(event) => selectFilter(event, "arms")}>
           <ListItemIcon>
             <PanToolIcon />
           </ListItemIcon>
-          <ListItemText primary="Arms" />
+          <span className="List">arms</span>
         </ListItem>
-        <ListItem button>
+        <ListItem button onClick={(event) => selectFilter(event, "legs")}>
           <ListItemIcon>
             <AirlineSeatLegroomExtraIcon />
           </ListItemIcon>
-          <ListItemText primary="Legs" />
+          <span className="List">legs</span>
         </ListItem>
-        <ListItem button>
+        <ListItem button onClick={(event) => selectFilter(event, "brain")}>
           <ListItemIcon>
             <FaceIcon />
           </ListItemIcon>
-          <ListItemText primary="Head" />
+          <span className="List">brain</span>
+        </ListItem>
+        <ListItem button onClick={(event) => selectFilter(event, "eyes")}>
+          <ListItemIcon>
+            <RemoveRedEyeIcon />
+          </ListItemIcon>
+          <span className="List">eyes</span>
+        </ListItem>
+        <ListItem button onClick={(event) => selectFilter(event, "torso")}>
+          <ListItemIcon>
+            <AccessibilityIcon />
+          </ListItemIcon>
+          <span className="List">torso</span>
         </ListItem>
       </List>
       <Divider />
@@ -143,6 +161,7 @@ export default function NavDrawer({ cart, onAddOne, onRemoveOne }) {
     <div>
       <React.Fragment>
         <SearchAppBar
+          cart={cart}
           clickOpenLeft={toggleDrawer("left", true)}
           clickOpenRight={toggleDrawer("right", true)}
         />

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Item from "./cartitem";
+import Item from "./item";
 import "./cartpage.css";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import IconButton from "@material-ui/core/IconButton";

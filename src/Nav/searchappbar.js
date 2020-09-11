@@ -6,6 +6,7 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import Tooltip from "@material-ui/core/Tooltip";
+import "./searchappbar.css";
 // import SearchIcon from "@material-ui/icons/Search";
 
 const useStyles = makeStyles((theme) => ({
@@ -63,8 +64,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchAppBar({ clickOpenLeft, clickOpenRight }) {
+export default function SearchAppBar({ clickOpenLeft, clickOpenRight, cart }) {
   const classes = useStyles();
+  let itemCounts = 0;
+
+  if (cart.length === 0) {
+    itemCounts = 0;
+  } else {
+    itemCounts = cart.reduce((item, itemId) => {
+      item[itemId] = item[itemId] || 0;
+      item[itemId]++;
+      return item;
+    });
+  }
 
   return (
     <div className={classes.root}>
@@ -87,16 +99,17 @@ export default function SearchAppBar({ clickOpenLeft, clickOpenRight }) {
             <div className="maintitle1">AXIAL</div>
             <div className="maintitle2">prosthetics</div>
           </div>
-
-          <Tooltip title="Cart">
-            <IconButton onClick={clickOpenRight}>
-              <ShoppingCartIcon className="carticon" />
-            </IconButton>
-          </Tooltip>
-
+          <div>
+            <span>{itemCounts}</span>
+            <Tooltip title="Cart">
+              <IconButton onClick={clickOpenRight}>
+                <ShoppingCartIcon className="carticon" />
+              </IconButton>
+            </Tooltip>
+          </div>
           {/* <div className={classes.search}>
             <div className={classes.searchIcon}>
-              <SearchIcon />
+              <SearchI con />
             </div>
             <InputBase
               placeholder="Search…"

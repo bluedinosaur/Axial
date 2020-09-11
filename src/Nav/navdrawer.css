@@ -1,0 +1,8 @@
+.List {
+  font-family: "Exo", sans-serif;
+}
+
+.rightdrawer {
+  display: flex;
+  flex-direction: column;
+}

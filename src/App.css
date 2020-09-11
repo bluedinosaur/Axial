@@ -1,27 +1,29 @@
 body {
   padding-top: 60px;
   font-family: "Exo", sans-serif;
-  /* font-family: "Maven Pro", sans-serif; */
 }
 
 .image-crop {
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  padding-bottom: 100%;
   overflow: hidden;
   position: relative;
-  display: inline-block;
 }
 
-.image-crop .img-on-hover {
+.imagefront {
   position: absolute;
-  left: -90px;
+  height: 100%;
+  width: auto;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .img-on-hover {
   position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 99;
+  height: 100%;
+  width: auto;
+  min-width: 100%;
+  min-height: 100%;
   opacity: 0;
   transition: opacity 0.3s ease-out;
 }
@@ -31,37 +33,32 @@ body {
 }
 
 .item-list-container {
-  padding: 30px;
-  display: grid;
-  grid-gap: 30px;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fill, 300px);
+  padding: 20px;
 }
 
 .item {
   display: flex;
   flex-direction: column;
-  width: 300px;
 }
 
-.fade-in-section {
+/* .fade-in-section {
   opacity: 0;
   transform: translateY(5vh);
   visibility: hidden;
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   will-change: opacity, visibility;
-}
+} */
 
-.fade-in-section.is-visible {
+/* .fade-in-section.is-visible {
   opacity: 1;
   transform: none;
   visibility: visible;
-}
+} */
 
 .label {
   display: flex;
   justify-content: space-between;
-  padding-top: 10px;
+  padding-top: 7px;
 }
 
 .addcart {
@@ -69,47 +66,4 @@ body {
   align-items: center;
   color: rgb(204, 204, 204);
   cursor: pointer;
-}
-
-.toolbar {
-  background-color: rgb(54, 54, 54);
-  display: flex;
-  justify-content: space-between;
-}
-
-.menutitle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.carticon {
-  cursor: pointer;
-  color: white;
-}
-
-.labelname {
-  font-weight: 600;
-}
-
-.labelprice {
-  font-size: small;
-}
-
-.maintitle1 {
-  padding-left: 10px;
-  text-align: center;
-  font-weight: 800;
-  letter-spacing: 14px;
-}
-
-.maintitle2 {
-  text-align: center;
-  font-size: x-small;
-  letter-spacing: 5px;
-}
-
-.rightdrawer {
-  display: flex;
-  flex-direction: column;
 }

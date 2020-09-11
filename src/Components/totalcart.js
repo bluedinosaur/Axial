@@ -1,5 +1,5 @@
 import React from "react";
-import data from "./data";
+import data from "../data";
 
 const Total = ({ cart }) => {
   let itemCounts = cart.reduce((item, itemId) => {

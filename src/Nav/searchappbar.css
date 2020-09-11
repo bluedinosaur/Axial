@@ -1,0 +1,37 @@
+.menutitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carticon {
+  cursor: pointer;
+  color: white;
+}
+
+.labelname {
+  font-weight: 600;
+}
+
+.labelprice {
+  font-size: small;
+}
+
+.maintitle1 {
+  padding-left: 10px;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: 14px;
+}
+
+.maintitle2 {
+  text-align: center;
+  font-size: x-small;
+  letter-spacing: 5px;
+}
+
+.toolbar {
+  background-color: rgb(54, 54, 54);
+  display: flex;
+  justify-content: space-between;
+}

@@ -2,6 +2,7 @@ const data = [
   {
     id: 0,
     name: "Bio Arm Type // UDE V4",
+    type: "arms",
     imgurlfront:
       "https://static01.nyt.com/images/2015/05/21/technology/21robotica1/21robotica1-superJumbo.jpg",
     imgurlback:
@@ -11,6 +12,7 @@ const data = [
   {
     id: 1,
     name: "Bio Leg Type // ASHI V2.5",
+    type: "legs",
     imgurlfront:
       "https://cdn.vox-cdn.com/thumbor/75lJ-5ra5WACBe5d6FzAQyb5BhQ=/0x4:640x431/1400x1400/filters:focal(0x4:640x431):format(jpeg)/cdn.vox-cdn.com/assets/3296165/1.jpg",
     imgurlback:
@@ -20,6 +22,7 @@ const data = [
   {
     id: 2,
     name: "Bio Heart Type // HATO V6",
+    type: "heart",
     imgurlfront:
       "https://cdn.hswstatic.com/gif/artificial-heart-abiocor-hand.jpg",
     imgurlback:
@@ -29,6 +32,7 @@ const data = [
   {
     id: 3,
     name: "Bio BrainCase Type // Nō V8.2",
+    type: "brain",
     imgurlfront:
       "https://i.pinimg.com/originals/a0/b4/fd/a0b4fd2c0eb635ecab90ef71ba5f6235.jpg",
     imgurlback:
@@ -36,8 +40,9 @@ const data = [
     price: 120000,
   },
   {
-    id: 3,
+    id: 4,
     name: "Bio Spine Type // SEKITSUI V2.1",
+    type: "torso",
     imgurlfront:
       "https://i.pinimg.com/736x/67/4d/a2/674da2056528372084cb23ea59f2c593.jpg",
     imgurlback:
@@ -45,13 +50,24 @@ const data = [
     price: 78000,
   },
   {
-    id: 3,
+    id: 5,
     name: "Bio Leg Type // JINSOKU V3",
+    type: "legs",
     imgurlfront:
       "https://3w568y1pmc7umeynn2o6c1my-wpengine.netdna-ssl.com/wp-content/uploads/2019/06/The-Design-and-Controversy-of-Running-Blades-IMG-01-862x574.jpg",
     imgurlback:
       "https://www.opcenters.com/wp-content/uploads/2017/03/athletics-and-prosthetics-e1488992916318.jpg",
     price: 42000,
+  },
+  {
+    id: 6,
+    name: "Bio Eye Type // GANKYU V1.1",
+    type: "eyes",
+    imgurlfront:
+      "https://www.nibib.nih.gov/sites/default/files/inline-images/Bionic%20eye_with%20glovepost.jpg",
+    imgurlback:
+      "https://news.uic.edu/files/2016/11/6x6-argus-retinal-implant_2D_3000x3000pxl_Image-sans-tab.jpg",
+    price: 62000,
   },
 ];
 
