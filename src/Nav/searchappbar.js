@@ -66,17 +66,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SearchAppBar({ clickOpenLeft, clickOpenRight, cart }) {
   const classes = useStyles();
-  let itemCounts = 0;
-
-  if (cart.length === 0) {
-    itemCounts = 0;
-  } else {
-    itemCounts = cart.reduce((item, itemId) => {
-      item[itemId] = item[itemId] || 0;
-      item[itemId]++;
-      return item;
-    });
-  }
+  let itemCounts = cart.length;
 
   return (
     <div className={classes.root}>
@@ -99,8 +89,8 @@ export default function SearchAppBar({ clickOpenLeft, clickOpenRight, cart }) {
             <div className="maintitle1">AXIAL</div>
             <div className="maintitle2">prosthetics</div>
           </div>
-          <div>
-            <span>{itemCounts}</span>
+          <div className="cartcountcontainer">
+            <div className="cartcount">{itemCounts}</div>
             <Tooltip title="Cart">
               <IconButton onClick={clickOpenRight}>
                 <ShoppingCartIcon className="carticon" />

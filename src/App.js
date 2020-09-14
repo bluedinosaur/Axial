@@ -9,8 +9,12 @@ import Snackbar from "@material-ui/core/Snackbar";
 import CloseIcon from "@material-ui/icons/Close";
 import Grid from "@material-ui/core/Grid";
 import Footer from "./Nav/footer";
+// import InputLabel from "@material-ui/core/InputLabel";
+// import MenuItem from "@material-ui/core/MenuItem";
+// import FormControl from "@material-ui/core/FormControl";
+// import Select from "@material-ui/core/Select";
 
-const ItemList = ({ data, onAddOne }) => {
+const ItemList = ({ data, onAddOne, handleSort }) => {
   return (
     <Grid
       container
@@ -18,6 +22,23 @@ const ItemList = ({ data, onAddOne }) => {
       spacing={4}
       justify="center"
     >
+      {/* <FormControl variant="outlined">
+        <InputLabel id="demo-simple-select-outlined-label">Sort</InputLabel>
+        <Select
+          labelId="demo-simple-select-outlined-label"
+          id="demo-simple-select-outlined"
+          // value={sort}
+          onChange={() => handleSort()}
+          label="SortItems"
+        >
+          <MenuItem value="none">
+            <em>Sort by...</em>
+          </MenuItem>
+          <MenuItem value="alphabetical">Alphabetical</MenuItem>
+          <MenuItem value="hightolow">$ High to Low</MenuItem>
+          <MenuItem value="lowtohigh">$ Low to High</MenuItem>
+        </Select>
+      </FormControl> */}
       {data.map((itemdata) => (
         <Grid item xs={12} sm={6} md={6} lg={4} xl={4} key={itemdata.name}>
           {/* <FadeInSection> */}
@@ -141,6 +162,10 @@ class App extends React.Component {
     });
   };
 
+  handleSort = () => {
+    console.log();
+  };
+
   render() {
     return (
       <div className="app-container">
@@ -172,7 +197,11 @@ class App extends React.Component {
             </React.Fragment>
           }
         />
-        <ItemList data={this.state.data} onAddOne={this.handleAddToCart} />
+        <ItemList
+          handleSort={this.handleSort}
+          data={this.state.data}
+          onAddOne={this.handleAddToCart}
+        />
         <Footer />
       </div>
     );

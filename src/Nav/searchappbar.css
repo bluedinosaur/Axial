@@ -35,3 +35,12 @@
   display: flex;
   justify-content: space-between;
 }
+
+.cartcount {
+  width: 10px;
+}
+
+.cartcountcontainer {
+  display: flex;
+  align-items: center;
+}
